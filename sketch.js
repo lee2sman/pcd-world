@@ -1,0 +1,125 @@
+//flatgame template by Lee2sman 2018-2019
+//leetusman.com
+//code=MIT license. artistic work = cc 3.0
+
+
+
+let soundtrack;
+var frame;
+var item = [];
+
+let worldW = 2000, worldH = 1000;
+let player, playerAnimation;
+let img = [], animations = [];
+let totalImages = 15, totalAnimations = 12;
+
+function preload(){
+    //soundtrack = loadSound('assets/soundtrack.mp3');
+
+    //load images
+    for (let i =0; i<totalImages; i++){
+     img[i] = loadImage('assets/images/'+i+'.png');
+     img[i].x = random(200,worldW-200);
+     img[i].y = random(200,worldH-200);
+   }
+
+   //load animations - not in a loop!
+    animations[0] = loadAnimation('assets/animations/bow01.png','assets/animations/bow02.png')
+    animations[1] = loadAnimation('assets/animations/cat01.png','assets/animations/cat02.png')
+    animations[2] = loadAnimation('assets/animations/cool01.png','assets/animations/cool04.png')
+    animations[3] = loadAnimation('assets/animations/cube01.png','assets/animations/cube02.png')
+    animations[4] = loadAnimation('assets/animations/hopper01.png','assets/animations/hopper02.png')
+    animations[5] = loadAnimation('assets/animations/lefty01.png','assets/animations/lefty02.png')
+    animations[6] = loadAnimation('assets/animations/money01.png','assets/animations/money04.png')
+    animations[7] = loadAnimation('assets/animations/palette01.png','assets/animations/palette02.png')
+    animations[8] = loadAnimation('assets/animations/panda01.png','assets/animations/panda02.png')
+    animations[9] = loadAnimation('assets/animations/sun01.png','assets/animations/sun03.png')
+    animations[10] = loadAnimation('assets/animations/tree01.png','assets/animations/tree03.png')
+    animations[11] = loadAnimation('assets/animations/walker01.png','assets/animations/walker02.png')
+
+    for (let i=0; i<totalAnimations;i++){
+      animations[i].x = random(200,2*worldW);
+      animations[i].y = random(200,worldH);
+    }
+
+    playerAnimation = loadAnimation('assets/animations/walker01.png','assets/animations/walker02.png');
+}
+
+function setup() {
+  createCanvas(worldW,worldH); //how big is our world? (in pixels!)
+
+  player = createSprite(width, height, 50, 100);
+  //player.addAnimation('playerAnimation');
+  player.addAnimation('moving', 'assets/animations/walker01.png','assets/animations/walker02.png');
+  player.changeAnimation('moving');
+
+}
+
+function draw(){
+  background(5,5,5);
+
+  for (let i=0; i<15; i++){
+    image(img[i],img[i].x,img[i].y,200,200);
+  }
+
+  //added some volcanos!
+    image(img[13],300,300,300,300);
+    image(img[13],100,700,300,300);
+    image(img[13],1300,300,300,300);
+    image(img[13],900,900,300,300);
+    image(img[13],1800,800,300,300);
+    image(img[13],800,500,300,300);
+    image(img[13],1100,700,300,300);
+    image(img[13],1500,500,300,300);
+
+  //animation(animations[0],100,100);
+   for(let i=0; i<totalAnimations; i++){
+      animation(animations[i],animations[i].x,animations[i].y);
+      animations[i].frameDelay = 15;
+   }
+
+  movePlayer();
+
+  //set the camera position to the player position
+  camera.position.x = player.position.x;
+  camera.position.y = player.position.y;
+
+  //limit the player movements
+  if(player.position.x < 0)
+    player.position.x = 0;
+  if(player.position.y < 0)
+    player.position.y = 0;
+  if(player.position.x > 2*width)
+    player.position.x = 2*width;
+  if(player.position.y > 2*height)
+    player.position.y = 2*height;
+
+
+  //character on the top
+  drawSprite(player);
+
+  fill(255);
+  textSize(24);
+  text("The volcano was filled with cookies... --a collaborative Flatgame at Processing Community Day Los Angeles 2019",0,0);
+}
+
+function movePlayer(){
+  // if (keyIsPressed){
+  //   if (!soundtrack.isPlaying()){
+  //     soundtrack.loop();
+  //   }
+  // }
+ if (keyIsDown(LEFT_ARROW)) {
+    player.position.x -= 25;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    player.position.x += 25;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    player.position.y -= 25;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    player.position.y += 25;
+  }
+}
