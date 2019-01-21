@@ -3,18 +3,14 @@
 //code=MIT license. artistic work = cc 3.0
 
 
-
-let soundtrack;
-var frame;
-var item = [];
-
+let frame;
+let item = [];
 let worldW = 2000, worldH = 1000;
 let player, playerAnimation;
 let img = [], animations = [];
-let totalImages = 15, totalAnimations = 12;
+let totalImages = 15, totalAnimations = 11;
 
 function preload(){
-    //soundtrack = loadSound('assets/soundtrack.mp3');
 
     //load images
     for (let i =0; i<totalImages; i++){
@@ -52,7 +48,7 @@ function setup() {
   //player.addAnimation('playerAnimation');
   player.addAnimation('moving', 'assets/animations/walker01.png','assets/animations/walker02.png');
   player.changeAnimation('moving');
-
+  player.animation.frameDelay = 15; //slow down the player animation
 }
 
 function draw(){
@@ -99,21 +95,20 @@ function draw(){
   drawSprite(player);
 
   fill(255);
-  textSize(24);
-  text("The volcano was filled with cookies... --a collaborative Flatgame at Processing Community Day Los Angeles 2019",0,0);
+  textSize(36);
+  text("The volcano was filled with cookies... ",0,00);
+  textSize(18);
+  text("--a collaborative Flatgame at Processing Community Day Los Angeles 2019",0,24);
 }
 
 function movePlayer(){
-  // if (keyIsPressed){
-  //   if (!soundtrack.isPlaying()){
-  //     soundtrack.loop();
-  //   }
-  // }
  if (keyIsDown(LEFT_ARROW)) {
     player.position.x -= 25;
+    player.mirrorX(-1); //flip sprite/animation horizontally
   }
   if (keyIsDown(RIGHT_ARROW)) {
     player.position.x += 25;
+    player.mirrorX(1); //show normal sprite/animation
   }
 
   if (keyIsDown(UP_ARROW)) {
