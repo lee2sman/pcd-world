@@ -2,7 +2,7 @@
 
 This is a playable though very minimal *flatgame* created in the workshop **Games For All! Flatgames with p5.play** led by [Lee Tusman](http://leetusman.com) at [Processing Community Day Los Angeles](https://day.processing.org) 
 
-30+ folks participated in the workshop, including: Lee Tusman, Moon Jang, R. Wolfson, Lizzy Brooks, Nicole Thayer, Daniel Shiffman, Aliki Caloyeras, Elias, Olympia, Devon Frost, Angi Chau, and many more!
+30+ folks participated in the workshop, including: Lee Tusman, Moon Jang, R. Wolfson, Lizzy Brooks, Nicole Thayer, Daniel Shiffman, Aliki Caloyeras, Elias, Olympia, Devon Frost, Angi Chau, Masood Kamandy and many more!
 
 # To Play
 
