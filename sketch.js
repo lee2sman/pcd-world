@@ -99,7 +99,7 @@ function draw(){
   text("The volcano was filled with cookies... ",0,00);
   textSize(18);
   text("--a collaborative Flatgame at Processing Community Day Los Angeles 2019",0,25);
-  text("Made by 30+ people including Lee Tusman, Moon Jang, R. Wolfson, Lizzy Brooks, Nicole Thayer, Daniel Shiffman, Aliki Caloyeras, Elias, Olympia, Devon Frost, Angi Chau, and many more!",0,50);
+  text("Made by 30+ people including Lee Tusman, Moon Jang, R. Wolfson, Lizzy Brooks, Nicole Thayer, Daniel Shiffman, Aliki Caloyeras, Elias, Olympia, Devon Frost, Angi Chau, Masood Kamandy and many more!",0,50);
 }
 
 function movePlayer(){
